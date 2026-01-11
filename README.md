@@ -1,36 +1,288 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+ABC FunLand - Aplikasi Edukasi Interaktif untuk Anak
+https://img.shields.io/badge/Next.js-15.0-black?style=for-the-badge&logo=next.js
+https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript
+https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=for-the-badge&logo=tailwindcss
+https://img.shields.io/badge/Prisma-ORM-purple?style=for-the-badge&logo=prisma
+https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white
 
-## Getting Started
+📖 Tentang Proyek
+ABC FunLand adalah aplikasi web edukasi interaktif yang dirancang untuk membantu anak-anak belajar mengenal huruf, suku kata, dan kata dengan cara yang menyenangkan. Aplikasi ini menggabungkan konsep gamifikasi dengan pembelajaran untuk menciptakan pengalaman belajar yang engaging.
 
-First, run the development server:
+✨ Fitur Utama
+🎯 Sistem Kuis Interaktif
 
-```bash
+Kuis Huruf - Belajar mengenal huruf A-Z dengan audio dan visual
+
+Kuis Suku Kata - Mengenal pola suku kata dasar (ba, bi, bu, dll.)
+
+Kuis Kata - Belajar kata-kata sederhana dalam Bahasa Indonesia
+
+Pertanyaan Acak - Setiap sesi mendapatkan 7 soal acak yang berbeda
+
+🏆 Sistem Gamifikasi
+
+Sistem Poin - Dapatkan poin untuk jawaban benar, kurangi untuk jawaban salah
+
+Sistem Nyawa - Mulai dengan 3 nyawa, habis jika skor di bawah 70%
+
+Leaderboard - Lihat peringkat berdasarkan total poin
+
+Toko Virtual - Beli nyawa tambahan dengan poin yang dikumpulkan
+
+🎨 Pengalaman Pengguna
+
+UI/UX Responsif - Berjalan lancar di desktop dan mobile
+
+Audio Feedback - Suara untuk setiap huruf/kata dan feedback benar/salah
+
+Visual Menarik - Gambar ilustrasi untuk setiap materi pembelajaran
+
+Animasi Interaktif - Transisi dan efek yang menyenangkan
+
+🔐 Manajemen Pengguna
+
+Autentikasi Lengkap - Login/Register dengan sistem yang aman
+
+Profil Pengguna - Lihat statistik dan riwayat kuis
+
+Progress Tracking - Pantau perkembangan belajar anak
+
+🚀 Mulai Cepat
+Prasyarat
+Node.js 18.17 atau lebih baru
+
+PostgreSQL database
+
+npm, yarn, pnpm, atau bun
+
+Langkah 1: Clone Repository
+bash
+git clone https://github.com/utrhmaa/ABCFunLand.git
+cd ABCFunLand
+Langkah 2: Install Dependencies
+bash
+npm install
+# atau
+yarn install
+# atau
+pnpm install
+# atau
+bun install
+Langkah 3: Setup Environment Variables
+Buat file .env di root direktori:
+
+env
+# Database
+DATABASE_URL="postgresql://username:password@localhost:5432/abcfunland"
+
+# Authentication (sesuaikan dengan provider Anda)
+NEXTAUTH_SECRET="your-secret-key-here"
+NEXTAUTH_URL="http://localhost:3000"
+
+# Next.js
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+Langkah 4: Setup Database
+bash
+# Generate Prisma client
+npx prisma generate
+
+# Jalankan migrasi database
+npx prisma db push
+# atau
+npx prisma migrate dev
+Langkah 5: Seed Database (Opsional)
+bash
+# Isi data awal untuk kuis
+npm run seed
+Langkah 6: Jalankan Server Development
+bash
 npm run dev
-# or
+# atau
 yarn dev
-# or
+# atau
 pnpm dev
-# or
+# atau
 bun dev
-```
+Buka http://localhost:3000 di browser untuk melihat aplikasi.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🏗️ Struktur Proyek
+text
+abcfunland/
+├── app/                    # Next.js App Router
+│   ├── (auth)/            # Halaman autentikasi
+│   ├── (loginUser)/       # Halaman setelah login
+│   │   ├── quiz/          # Halaman kuis
+│   │   │   ├── huruf/     # Kuis huruf
+│   │   │   ├── suku-kata/ # Kuis suku kata
+│   │   │   └── kata/      # Kuis kata
+│   │   ├── shop/          # Toko virtual
+│   │   └── profile/       # Profil pengguna
+│   ├── api/               # API Routes
+│   │   ├── quiz/          # API untuk kuis
+│   │   ├── user/          # API untuk user
+│   │   └── shop/          # API untuk shop
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Homepage
+├── components/            # Komponen React
+│   ├── quiz/             # Komponen kuis
+│   ├── ui/               # UI components
+│   └── shared/           # Shared components
+├── lib/                  # Utility functions
+│   ├── db.ts             # Prisma client
+│   └── utils.ts          # Helper functions
+├── prisma/               # Prisma schema
+│   └── schema.prisma     # Database schema
+├── public/               # Static assets
+│   ├── audio/            # File audio
+│   └── images/           # Gambar dan ilustrasi
+├── types/                # TypeScript type definitions
+└── styles/               # Global styles
+🛠️ Teknologi yang Digunakan
+Framework: Next.js 15 dengan App Router
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Bahasa: TypeScript
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Styling: Tailwind CSS
 
-## Learn More
+Database: PostgreSQL dengan Prisma ORM
 
-To learn more about Next.js, take a look at the following resources:
+Authentication: NextAuth.js atau Clerk
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deployment: Vercel (direkomendasikan)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📦 Script NPM
+json
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
+    "prisma:studio": "prisma studio",
+    "seed": "tsx prisma/seed.ts"
+  }
+}
+🎮 Cara Menggunakan Aplikasi
+Untuk Pengguna Baru:
+Register/Login - Buat akun baru atau login
 
-## Deploy on Vercel
+Pilih Jenis Kuis - Pilih antara huruf, suku kata, atau kata
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Pelajari Aturan - Baca aturan permainan sebelum mulai
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Mulai Kuis - Jawab 7 soal dengan mendengarkan audio dan memilih jawaban
+
+Lihat Hasil - Periksa skor dan statistik Anda
+
+Ulangi atau Coba Jenis Lain - Tingkatkan skill Anda!
+
+Fitur Khusus:
+Audio Guide: Dengarkan pengucapan setiap huruf/kata
+
+Sistem Poin: +10 untuk benar, -10 untuk salah
+
+Sistem Nyawa: Kehilangan nyawa jika skor akhir < 70%
+
+Toko: Beli nyawa ekstra dengan poin yang terkumpul
+
+📊 Model Database
+prisma
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  points    Int      @default(0)
+  lives     Int      @default(3)
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Quiz {
+  id       String   @id @default(cuid())
+  question String
+  answer   String
+  options  String[]
+  point    Int      @default(10)
+  type     String   // "HURUF", "SUKU_KATA", "KATA"
+}
+
+model QuizAttempt {
+  id             String   @id @default(cuid())
+  userId         String
+  quizId         String
+  selectedAnswer String
+  correct        Boolean
+  pointsEarned   Int
+  createdAt      DateTime @default(now())
+}
+🚀 Deployment di Vercel
+https://vercel.com/button
+
+Untuk deploy ke Vercel:
+
+Push kode ke GitHub
+
+Import ke Vercel
+
+Konfigurasi Environment Variables
+
+Deploy!
+
+Environment Variables yang diperlukan di Vercel:
+
+DATABASE_URL - Connection string PostgreSQL
+
+NEXTAUTH_SECRET - Secret untuk NextAuth
+
+NEXTAUTH_URL - URL aplikasi Anda
+
+🤝 Berkontribusi
+Kontribusi sangat diterima! Ikuti langkah-langkah berikut:
+
+Fork repository
+
+Buat branch fitur (git checkout -b feature/AmazingFeature)
+
+Commit perubahan (git commit -m 'Add some AmazingFeature')
+
+Push ke branch (git push origin feature/AmazingFeature)
+
+Buat Pull Request
+
+Panduan Kontribusi
+Gunakan TypeScript untuk semua kode baru
+
+Ikuti konvensi kode yang sudah ada
+
+Tambahkan komentar untuk kode yang kompleks
+
+Update dokumentasi sesuai kebutuhan
+
+📄 Lisensi
+Proyek ini dilisensikan di bawah MIT License - lihat file LICENSE untuk detail.
+
+🙏 Ucapan Terima Kasih
+Tim Next.js untuk framework yang luar biasa
+
+Komunitas Tailwind CSS untuk utilitas CSS yang produktif
+
+Prisma Team untuk ORM yang developer-friendly
+
+Semua kontributor yang telah membantu pengembangan proyek ini
+
+📞 Kontak & Support
+Issues: GitHub Issues
+
+Discussions: GitHub Discussions
+
+Email: utrhmaa@example.com
+
+🌟 Dukungan
+Jika Anda menyukai proyek ini, berikan ⭐ di GitHub!
+
+Dibuat dengan ❤️ untuk pendidikan anak Indonesia yang lebih baik
+
+© 2024 ABC FunLand. Semua hak dilindungi undang-undang.
