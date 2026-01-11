@@ -38,8 +38,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        border: "hsl(0, 0%, 90%)", // contoh
-        ring: "hsl(220, 80%, 56%)", // contoh
+        border: "hsl(0, 0%, 90%)",
+        ring: "hsl(220, 80%, 56%)",
         background: "hsl(0,0%,100%)",
         foreground: "hsl(0,0%,0%)",
       },
@@ -59,6 +59,6 @@ module.exports = {
         },
       });
     }),
-    require("tailwindcss-animate"), // jika pakai animate
+    require("tailwindcss-animate"),
   ],
 };
